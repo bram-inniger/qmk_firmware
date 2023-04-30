@@ -1,0 +1,14 @@
+OLED_ENABLE = yes       # Enables the use of OLED displays
+OLED_DRIVER = SSD1306   # Enables the use of OLED displays
+ENCODER_ENABLE = yes    # Enables the use of one or more encoders
+RGBLIGHT_ENABLE = yes   # Enable keyboard RGB underglow
+
+#LTO_ENABLE = yes
+#CONSOLE_ENABLE = no
+#COMMAND_ENABLE = no
+#MOUSEKEY_ENABLE = no
+#SPACE_CADET_ENABLE = no
+#GRAVE_ESC_ENABLE = no
+#MAGIC_ENABLE = no
+#AVR_USE_MINIMAL_PRINTF = yes
+#MUSIC_ENABLE = no
