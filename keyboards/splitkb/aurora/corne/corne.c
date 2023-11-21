@@ -213,18 +213,22 @@ static void render_layer_state(void) {
         0x20, 0xbd, 0xbe, 0xbf, 0x20,
         0x20, 0xdd, 0xde, 0xdf, 0x20, 0};
 
-    if(layer_state_is(_ADJUST)) {
-        rgb_matrix_sethsv_noeeprom(HSV_ORANGE);
-        oled_write_P(adjust_layer, false);
-    } else if(layer_state_is(_LOWER)) {
-        rgb_matrix_sethsv_noeeprom(HSV_YELLOW);
-        oled_write_P(lower_layer, false);
-    } else if(layer_state_is(_RAISE)) {
-        rgb_matrix_sethsv_noeeprom(HSV_GOLDENROD);
-        oled_write_P(raise_layer, false);
-    } else {
-        rgb_matrix_sethsv_noeeprom(HSV_GOLD);
-        oled_write_P(default_layer, false);
+    switch (get_highest_layer(layer_state | default_layer_state)) {
+        case _LOWER:
+            rgb_matrix_sethsv_noeeprom(HSV_YELLOW);
+            oled_write_P(lower_layer, false);
+            break;
+        case _RAISE:
+            rgb_matrix_sethsv_noeeprom(HSV_GOLDENROD);
+            oled_write_P(raise_layer, false);
+            break;
+        case _ADJUST:
+            rgb_matrix_sethsv_noeeprom(HSV_ORANGE);
+            oled_write_P(adjust_layer, false);
+            break;
+        default:
+            rgb_matrix_sethsv_noeeprom(HSV_GOLD);
+            oled_write_P(default_layer, false);
     }
 }
 
